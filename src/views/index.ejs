@@ -1,0 +1,49 @@
+<%- include('includes/head'); %>
+    <%- include('includes/nav'); %>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-2"></div>
+
+                <div class="col-lg-8 my-3">
+                    <h1 class="text-center">Agenda</h1>
+                    <p class="lead text-center">Seus contatos estão abaixo</p>
+
+                    <%- include('includes/messages'); %>
+                    
+                    <% if(contatos.length >0) { %>
+                    <div class="responsive-table">
+                        <table class="table my-3">
+                            <thead class="fw-bold">
+                                <td>Nome</td>
+                                <td>Sobrenome</td>
+                                <td>Telefone</td>
+                                <td>e-mail</td>
+                                <td></td>
+                                <td></td>
+                            </thead>
+                            <% contatos.forEach(contato => { %>
+                                <tr>
+                                    <td><%= contato.nome %></td>
+                                    <td><%= contato.sobrenome %></td>
+                                    <td><%= contato.telefone %></td>
+                                    <td><%= contato.email %></td>
+                                    <td><a href="/contato/index/<%= contato._id%>" alt="Editar">📝</a></td>
+                                    <td><a class="text-danger" href="/contato/delete/<%= contato._id%>" alt="Apagar">🗑️</a></td>
+                                </tr>
+                            <% }); %>
+                            </table>
+                    </div>
+                    <% } else { %>
+                        <p class="text-center lead">Não existem contatos na sua agenda 🫤</p>
+                    <% } %>
+                </div>
+
+
+
+                <div class="col-lg-2"></div>
+
+            </div>
+        </div>
+
+        <%- include('includes/footer'); %>
