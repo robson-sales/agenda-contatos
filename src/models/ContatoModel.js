@@ -74,8 +74,10 @@ class Contato {
 
     }
 
-    static async buscaContatos(idUser) {
-        const contatos = await ContatoModel.find({ idUser: idUser })
+    // static async buscaContatos(idUser) {
+    //     const contatos = await ContatoModel.find({ idUser: idUser })
+    static async buscaContatos() {
+        const contatos = await ContatoModel.find()
             .sort({ criadoEm: -1 });
         return contatos;
     }
